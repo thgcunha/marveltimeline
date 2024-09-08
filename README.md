@@ -20,3 +20,5 @@ Tecnologias Utilizadas:
 HTML/CSS: Para a estruturação e estilização da página.
 JavaScript: Para criar a interação dinâmica dos elementos e gerar a linha do tempo de forma programática.
 Possível Integração Futura: Uma base de dados ou API que permita adicionar novos filmes automaticamente.
+
+https://marveltimeline.vercel.app/

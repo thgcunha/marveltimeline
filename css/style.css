@@ -687,9 +687,9 @@ h2 {
     
 
     body {
-        background-image: url("https://wallpapercave.com/wp/wp12599672.jpg");
+        background-image: url("img/telaresponsiva.png");
     
-    
+        background-repeat: no-repeat;
         margin: 0; /* Remove a margem para evitar o fundo branco */ 
 
         background-size: contain; /* Mostra a imagem inteira sem cortar */
@@ -792,12 +792,13 @@ h2 {
 
     body {
         background-image: url("https://wallpapercave.com/wp/wp12599672.jpg");
+        background-size: cover; /* Cobre toda a tela */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment:fixed; /* Remove o efeito fixo para evitar problemas */
+        height: 100vh; /* Garante que o fundo ocupe toda a altura da tela */
         margin: 0; /* Remove a margem para evitar o fundo branco */ 
-
-        background-size: contain; /* Mostra a imagem inteira sem cortar */
-        background-attachment: scroll; /* Evita o problema de zoom */
-        background-position: center top; /* Ajusta a posição para o topo central */
-        margin: 0;
+    }
 
     h1 {
         font-size: 1.0em; /* Reduz o tamanho do título principal */

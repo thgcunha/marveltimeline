@@ -658,6 +658,109 @@ h2 {
 }
 
 /* Responsividade */
+@media (max-width: 430px){
+    footer {
+        padding: 1px 0; /* Menos padding nas telas menores */
+    }
+
+    .bg-rodape {
+        flex-direction: column; /* Empilha os elementos no footer */
+        text-align: center;
+    }
+
+    .bg-rodape p{
+        font-size: small;
+    }
+
+
+    .social-icons {
+        gap: 10px;
+    }
+
+    .social-icons a {
+        font-size: 10px; /* Ícones menores para telas pequenas */
+    }
+
+    .navbar-brand {
+        font-size: medium; /* Ajusta o tamanho do texto do menu */
+    }
+    
+
+    body {
+        background-image: url("https://wallpapercave.com/wp/wp12599672.jpg");
+    
+    
+        margin: 0; /* Remove a margem para evitar o fundo branco */ 
+
+        background-size: contain; /* Mostra a imagem inteira sem cortar */
+        background-attachment: scroll; /* Evita o problema de zoom */
+        background-position: center top; /* Ajusta a posição para o topo central */
+    }
+
+    h1 {
+        font-size: 1.0em; /* Reduz o tamanho do título principal */
+    }
+
+    h5 {
+        font-size: 0.8em; /* Ajusta o tamanho dos subtítulos */
+    }
+
+    .timeline {
+        padding: 20px 10px; /* Reduz o espaçamento para caber melhor */
+    }
+
+    
+
+
+    
+
+
+    
+    .timeline-content {
+        font-size: 0.5em; /* Ajusta o tamanho do texto */
+        border-radius: 20px;
+        width: 80%; /* Reduz o tamanho para dispositivos menores */
+        padding: 10px; /* Adiciona um pouco de espaçamento */
+        background-color: rgba(14, 13, 13, 0.8); /* Fundo preto com 80% de opacidade */
+        border:none;
+        max-height: 160px;
+        min-height: 70px;
+        
+        
+        
+        
+    }
+
+            
+        .timeline-content h2 {
+            font-size:8px;
+            margin: 0 0 8px 0; /* Margem inferior ajustada */
+            
+        }
+    
+        button.btn-outline-danger {
+            font-size: 0.9em; /* Reduz o texto dos botões */
+            
+        }
+
+    
+    
+    
+
+    .bg-1, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6, .bg-7, .bg-8, .bg-9, .bg-10, .bg-11, .bg-12, .bg-13, .bg-14, .bg-15, .bg-16 , .bg-17 , .bg-18 , .bg-19 , .bg-20, .bg-21{
+        min-height: 210px; /* Reduz a altura mínima em telas menores */
+        padding-top: 70px; /* Ajusta o espaçamento superior */
+        padding-bottom: 10px; /* Ajusta o espaçamento inferior */
+        max-height: 300px;
+        max-width: 350%;
+        
+    }
+
+    .btn{
+        font-size: 1.1em;
+    }
+
+}
 
 @media (max-width: 768px) {
     footer {
@@ -689,13 +792,12 @@ h2 {
 
     body {
         background-image: url("https://wallpapercave.com/wp/wp12599672.jpg");
-        background-size: cover; /* Cobre toda a tela */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment:fixed; /* Remove o efeito fixo para evitar problemas */
-        height: 100vh; /* Garante que o fundo ocupe toda a altura da tela */
         margin: 0; /* Remove a margem para evitar o fundo branco */ 
-    }
+
+        background-size: contain; /* Mostra a imagem inteira sem cortar */
+        background-attachment: scroll; /* Evita o problema de zoom */
+        background-position: center top; /* Ajusta a posição para o topo central */
+        margin: 0;
 
     h1 {
         font-size: 1.0em; /* Reduz o tamanho do título principal */

@@ -1,5 +1,5 @@
  /* Adicionando estilo ao menu */
- .navbar {
+.navbar {
     background-color: #0f0f0f; /* Cor de fundo escura combinando com o tema Marvel */
 }
 
@@ -126,11 +126,11 @@ h5{
 
 
 .timeline-content {
-    
+    width: 400px;
     padding: 7px;
     background-color:#0e0d0d; /* Cor de fundo mais suave, ainda em tons de azul claro */
     position: relative;
-    border-radius: 10px; /* Bordas arredondadas para um visual mais moderno */
+    border-radius: 15px; /* Bordas arredondadas para um visual mais moderno */
     border: 5px solid rgba(0, 0, 0, 0.9); /* Borda mais sutil para não criar uma caixa pesada */
     z-index: 2;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra mais suave e refinada */
@@ -140,7 +140,7 @@ h5{
 .timeline-content h2 {
     margin: 0 0 10px 0; /* Margem inferior para separar do conteúdo */
     color:#ffffff;/* Cor escura para contraste */
-    font-size: 1.5em; /* Tamanho do texto maior para destaque */
+    font-size: 1.2em; /* Tamanho do texto maior para destaque */
     font-weight: bold; /* Negrito para dar mais ênfase */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Sombra sutil para melhor legibilidade */
     
@@ -677,21 +677,80 @@ h2 {
 }
 
 /* Responsividade */
+
 @media (max-width: 768px) {
     .bg-rodape {
         flex-direction: column;
         text-align: center;
+        
     }
 
     .social-icons {
         margin-top: 10px;
         justify-content: center;
+        width:20px;
     }
 
     .bg-rodape p {
         margin-bottom: 10px;
     }
+
+    .navbar-brand {
+        font-size: large; /* Ajusta o tamanho do texto do menu */
+    }
+
+    h1 {
+        font-size: 1.0em; /* Reduz o tamanho do título principal */
+    }
+
+    h5 {
+        font-size: 0.8em; /* Ajusta o tamanho dos subtítulos */
+    }
+
+    .timeline {
+        padding: 20px 10px; /* Reduz o espaçamento para caber melhor */
+    }
+
+    
+    .timeline-content {
+        font-size: 0.5em; /* Ajusta o tamanho do texto */
+        border-radius: 20px;
+        width: 90%; /* Reduz o tamanho para dispositivos menores */
+        padding: 10px; /* Adiciona um pouco de espaçamento */
+        background-color: rgba(14, 13, 13, 0.8); /* Fundo preto com 80% de opacidade */
+        border:none;
+        margin-top: 80px;
+        
+        
+        }
+
+            
+        .timeline-content h2 {
+            font-size: 1.2em; /* Reduz o tamanho do título */
+        }
+    
+        button.btn-outline-danger {
+            font-size: 1.1em; /* Reduz o texto dos botões */
+        }
+
+    
+    
+
+    .bg-1, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6, .bg-7, .bg-8, .bg-9, .bg-10, .bg-11, .bg-12, .bg-13, .bg-14, .bg-15, .bg-16 , .bg-17 , .bg-18 , .bg-19 , .bg-20, .bg-21{
+        min-height: 100px; /* Reduz a altura mínima em telas menores */
+        padding-top: 90px; /* Ajusta o espaçamento superior */
+        padding-bottom: 20px; /* Ajusta o espaçamento inferior */
+        
+        
+    }
+
+    .btn{
+        font-size: 1.1em;
+    }
+
 }
+
+
 
 .hover-text {
     display: none;
@@ -709,3 +768,5 @@ h2 {
 .btn:hover .hover-text {
     display: block;
 }
+
+

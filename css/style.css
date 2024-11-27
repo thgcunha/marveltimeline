@@ -1,41 +1,21 @@
- /* Adicionando estilo ao menu */
 .navbar {
-    background-color: #0f0f0f; /* Cor de fundo escura combinando com o tema Marvel */
+    background-color: #0f0f0f; /* Cor de fundo escura */
 }
-
 .navbar-brand {
-    color: #d80303; /* Cor do texto vermelho Marvel */
+    color: #d80303 !important; /* Cor do texto da marca */
     font-weight: bold;
 }
-
 .nav-link {
-    color: #ffffff !important; /* Cor do texto do link */
+    color: #ffffff !important; /* Cor do texto dos links */
 }
-
 .nav-link:hover {
-    color: #d80303 !important; /* Muda a cor ao passar o mouse */
+    color: #d80303 !important; /* Cor ao passar o mouse */
 }
-
-/* Para dispositivos móveis */
 .navbar-toggler {
-    border-color: #d80303;
+    border-color: #d80303; /* Cor da borda do botão hambúrguer */
 }
-
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' width='30' height='30'%3E%3Cpath stroke='rgba(2");
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-.navbar-brand{
-    text-align: center;
-    font-size: xx-large;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    
-
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' fill='%23ffffff'%3E%3Cpath stroke='%23d80303' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 
@@ -133,6 +113,7 @@ h5{
     border-radius: 15px; /* Bordas arredondadas para um visual mais moderno */
     border: 5px solid rgba(0, 0, 0, 0.9); /* Borda mais sutil para não criar uma caixa pesada */
     z-index: 2;
+    
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra mais suave e refinada */
 }
 
@@ -679,24 +660,41 @@ h2 {
 /* Responsividade */
 
 @media (max-width: 768px) {
-    .bg-rodape {
-        flex-direction: column;
-        text-align: center;
-        
+    footer {
+        padding: 1px 0; /* Menos padding nas telas menores */
     }
+
+    .bg-rodape {
+        flex-direction: column; /* Empilha os elementos no footer */
+        text-align: center;
+    }
+
+    .bg-rodape p{
+        font-size: small;
+    }
+
 
     .social-icons {
-        margin-top: 10px;
-        justify-content: center;
-        width:20px;
+        gap: 10px;
     }
 
-    .bg-rodape p {
-        margin-bottom: 10px;
+    .social-icons a {
+        font-size: 10px; /* Ícones menores para telas pequenas */
     }
 
     .navbar-brand {
-        font-size: large; /* Ajusta o tamanho do texto do menu */
+        font-size: medium; /* Ajusta o tamanho do texto do menu */
+    }
+    
+
+    body {
+        background-image: url("https://wallpapercave.com/wp/wp12599672.jpg");
+        background-size: cover; /* Cobre toda a tela */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment:fixed; /* Remove o efeito fixo para evitar problemas */
+        height: 100vh; /* Garante que o fundo ocupe toda a altura da tela */
+        margin: 0; /* Remove a margem para evitar o fundo branco */ 
     }
 
     h1 {
@@ -712,35 +710,49 @@ h2 {
     }
 
     
+
+
+    
+
+
+    
     .timeline-content {
         font-size: 0.5em; /* Ajusta o tamanho do texto */
         border-radius: 20px;
-        width: 90%; /* Reduz o tamanho para dispositivos menores */
+        width: 80%; /* Reduz o tamanho para dispositivos menores */
         padding: 10px; /* Adiciona um pouco de espaçamento */
         background-color: rgba(14, 13, 13, 0.8); /* Fundo preto com 80% de opacidade */
         border:none;
-        margin-top: 80px;
+        max-height: 160px;
+        min-height: 70px;
         
         
-        }
+        
+        
+    }
 
             
         .timeline-content h2 {
-            font-size: 1.2em; /* Reduz o tamanho do título */
+            font-size:8px;
+            margin: 0 0 8px 0; /* Margem inferior ajustada */
+            
         }
     
         button.btn-outline-danger {
-            font-size: 1.1em; /* Reduz o texto dos botões */
+            font-size: 0.9em; /* Reduz o texto dos botões */
+            
         }
 
+    
     
     
 
     .bg-1, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6, .bg-7, .bg-8, .bg-9, .bg-10, .bg-11, .bg-12, .bg-13, .bg-14, .bg-15, .bg-16 , .bg-17 , .bg-18 , .bg-19 , .bg-20, .bg-21{
-        min-height: 100px; /* Reduz a altura mínima em telas menores */
-        padding-top: 90px; /* Ajusta o espaçamento superior */
-        padding-bottom: 20px; /* Ajusta o espaçamento inferior */
-        
+        min-height: 210px; /* Reduz a altura mínima em telas menores */
+        padding-top: 70px; /* Ajusta o espaçamento superior */
+        padding-bottom: 10px; /* Ajusta o espaçamento inferior */
+        max-height: 300px;
+        max-width: 350%;
         
     }
 
@@ -768,5 +780,3 @@ h2 {
 .btn:hover .hover-text {
     display: block;
 }
-
-

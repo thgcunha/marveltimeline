@@ -1,78 +1,149 @@
-.navbar {
-    background-color: #0f0f0f; /* Cor de fundo escura */
-}
-.navbar-brand {
-    color: #d80303 !important; /* Cor do texto da marca */
-    font-weight: bold;
-}
-.nav-link {
-    color: #ffffff !important; /* Cor do texto dos links */
-}
-.nav-link:hover {
-    color: #d80303 !important; /* Cor ao passar o mouse */
-}
-.navbar-toggler {
-    border-color: #d80303; /* Cor da borda do botão hambúrguer */
-}
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' fill='%23ffffff'%3E%3Cpath stroke='%23d80303' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+/* 
+ * Marvel Timeline - Premium Design System
+ */
+
+:root {
+    --marvel-red: #ed1d24;
+    --marvel-dark-red: #c61a1e;
+    --bg-dark: #0a0a0c;
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+    --glass-bg: rgba(20, 20, 25, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    background-image: url("https://wallpapercave.com/wp/wp12599672.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
 }
 
-h1 {
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--marvel-red);
+    border-radius: 5px;
+}
+
+/* Utilities */
+.text-marvel {
+    color: var(--marvel-red) !important;
+}
+
+.btn-marvel {
+    background-color: var(--marvel-red);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-marvel:hover {
+    background-color: var(--marvel-dark-red);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(237, 29, 36, 0.4);
+}
+
+/* Navbar */
+.glass-nav {
+    background: rgba(10, 10, 12, 0.8) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.brand-text {
+    background-color: var(--marvel-red);
+    color: white;
+    padding: 2px 5px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color:#ffffff ;/* Alterado para uma cor mais escura para melhor contraste */
-    margin: 20px 0;
-    font-size: 2.5em; /* Tamanho aumentado para maior impacto */
-    text-shadow: 2px 2px 4px rgba(3, 3, 3, 1.0); /* Sombra para melhorar a legibilidade */
+    position: relative;
+    background: linear-gradient(to bottom, rgba(10, 10, 12, 0.7), rgba(10, 10, 12, 1)), url('https://wallpapers.com/images/high/1366x768-captain-america-background-kbt9928mfb7p95rb.webp') center/cover fixed;
 }
 
-h5{
-    
-    color:#6e6a6a ;/* Alterado para uma cor mais escura para melhor contraste */
-    
-    
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.0); /* Sombra para melhorar*/
-    text-align: center;
-    color:#ffffff ;/* Alterado para uma cor mais escura para melhor contraste */
+.hero-content h1 {
+    font-size: 4rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
-    
 
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
 
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    animation: bounce 2s infinite;
+    color: var(--marvel-red);
+    font-size: 24px;
+}
 
-.timeline {
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+
+/* Timeline Container */
+#timeline-section {
+    padding: 80px 0;
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 0;
 }
 
+/* Central Line */
 .timeline::after {
     content: '';
     position: absolute;
-    width: 5px;
-    background-color: #000000;
+    width: 4px;
+    background: linear-gradient(to bottom, transparent, var(--marvel-red), transparent);
     top: 0;
     bottom: 0;
     left: 50%;
     margin-left: -2px;
 }
 
+/* Timeline Items */
 .timeline-item {
-    padding: 20px;
+    padding: 10px 40px;
     position: relative;
     background-color: inherit;
     width: 50%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra mais suave para destaque */
-    margin-bottom: 20px;
+    opacity: 0; /* For animation */
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.timeline-item.in-view {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .timeline-item.left {
@@ -83,16 +154,19 @@ h5{
     left: 50%;
 }
 
+/* Dots on the line */
 .timeline-item::after {
     content: '';
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: #d80303;
-    border: 4px solid #000000;
-    top: 5px;
+    background-color: var(--marvel-red);
+    border: 4px solid var(--bg-dark);
     border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 1;
+    box-shadow: 0 0 10px var(--marvel-red);
 }
 
 .timeline-item.left::after {
@@ -103,783 +177,163 @@ h5{
     left: -10px;
 }
 
-
-
+/* Timeline Content Card (Glassmorphism) */
 .timeline-content {
-    width: 400px;
-    padding: 7px;
-    background-color:#0e0d0d; /* Cor de fundo mais suave, ainda em tons de azul claro */
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 0;
     position: relative;
-    border-radius: 15px; /* Bordas arredondadas para um visual mais moderno */
-    border: 5px solid rgba(0, 0, 0, 0.9); /* Borda mais sutil para não criar uma caixa pesada */
-    z-index: 2;
-    
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra mais suave e refinada */
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Estilo para o título dentro de .timeline-content */
-.timeline-content h2 {
-    margin: 0 0 10px 0; /* Margem inferior para separar do conteúdo */
-    color:#ffffff;/* Cor escura para contraste */
-    font-size: 1.2em; /* Tamanho do texto maior para destaque */
-    font-weight: bold; /* Negrito para dar mais ênfase */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Sombra sutil para melhor legibilidade */
-    
+.timeline-content:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(237, 29, 36, 0.3);
+    border-color: rgba(237, 29, 36, 0.5);
 }
 
-
-
-
-
-.bg-1 {
-    background-image: url('https://wallpapers.com/images/high/1366x768-captain-america-background-kbt9928mfb7p95rb.webp') ;
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: auto;
-    padding-top: 150px; /* Ajustado para melhor posicionamento do conteúdo */
-    padding-bottom: 50px;
-    position: relative;
-    color: #fff; /* Texto branco para contraste */
+.timeline-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center top;
+    border-bottom: 1px solid var(--glass-border);
 }
 
-.bg-1::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)); /* Gradiente para uma sobreposição mais suave */
-    z-index: 1;
-}
-
-
-h2 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    position: relative;
-    color: rgb(0, 0, 0);
-    font-size: 28px;
-    z-index: 2;
-    text-align: center;
-    margin: 0;
+.timeline-info {
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.1); /* Fundo escuro atrás do texto */
-    border-radius: 5px;
 }
 
-.bg-2{
-    background-image: url('https://lumiere-a.akamaihd.net/v1/images/eu_cma_ft_m_7866210f.jpeg?region=0,0,750,618');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: auto;
-    padding-top: 290px; /* Adiciona espaço superior antes do conteúdo */
-    padding-bottom: 50px; /* Espaço inferior */
-    position: relative;
-
+.timeline-year {
+    font-size: 0.9rem;
+    color: var(--marvel-red);
+    font-weight: 800;
+    margin-bottom: 5px;
+    display: block;
 }
 
-.bg-2::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Sobreposição escura */
-    z-index: 1;
-}
-
-
-
-.bg-3 {
-    background-image: url('https://uploads.maisgoias.com.br/2023/05/18a05710-homem-de-ferro-2008.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-3::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-4 {
-    background-image: url('https://www.papodecinema.com.br/wp-content/uploads/2013/04/20180301-1200-copy.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-4::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-
-
-.bg-5 {
-    background-image: url('https://img.odcdn.com.br/wp-content/uploads/2023/06/o-incrivel-hulk-1.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-5::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-
-.bg-6 {
-    background-image: url('https://i0.wp.com/cinegrandiose.com/wp-content/uploads/Thor-1.png?fit=960%2C540&ssl=1');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-6::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-7 {
-    background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/estadao/KGKRV37M4RLVRA5CDD3YUVJLF4.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-7::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-
-.bg-8 {
-    background-image: url('https://pipocamoderna.com.br/storage/2017/10/iron-man3.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-8::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-
-
-.bg-9 {
-    background-image: url('https://w.wallhaven.cc/full/nz/wallhaven-nzzv5v.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-9::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-10 {
-    background-image: url('https://sm.ign.com/ign_br/screenshot/default/captain-america-the-winter-soldier-23_5yqx.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-10::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-11 {
-    background-image: url('https://www.papodecinema.com.br/wp-content/uploads/2014/07/20180402-guardioes-da-galaxia-01-papo-de-cinema-e1522701613372.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-11::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-12 {
-    background-image: url('https://noticiasdatv.uol.com.br/media/_versions/artigos/pom-klementieff-dave-bautista-chris-pratt-kurt-russell-zoe-saldana-guardioes-da-galaxia-vol-2-reproducao-marvel-min_fixed_large.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-12::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-13 {
-    background-image: url('https://images-1.rakuten.tv/storage/snapshot/shot/b6c59ca2-770f-4e4b-a231-5222480565a1-snapshot-1590665210.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-13::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-14 {
-    background-image: url('https://www.planocritico.com/wp-content/uploads/2018/04/Homem-Formiga.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-14::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-15 {
-    background-image: url('https://cinematologia.com.br/cine/wp-content/uploads/2019/04/696684.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-15::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-16{
-    background-image: url('https://www.papodecinema.com.br/wp-content/uploads/2016/10/20180406-doutor-estranho.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-16::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-17 {
-    background-image: url('https://uploads.metroimg.com/wp-content/uploads/2019/07/04122002/pantera-negra.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-17::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-18 {
-    background-image: url('https://s2-g1.glbimg.com/KqYzl29KpXiOsRi-5S3PCO0O71k=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2017/0/V/WqIYjQTqGhVaDLLfprMg/thor-ragnarok-hulk.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-18::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-19{
-    background-image: url('https://i0.wp.com/assets.b9.com.br/wp-content/uploads/2018/04/av.jpg?fit=2200%2C1238&ssl=1');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-19::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-20 {
-    background-image: url('https://ogimg.infoglobo.com.br/in/22845683-088-31f/FT1086A/760/76973580_SC-Homem-Formiga-e-Vespa-Marvel-Studios.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-20::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.bg-21{
-    background-image: url('https://legadodamarvel.com.br/wp-content/uploads/2019/05/1nova-imagem-vingadores-ultimato-legadodamarvel.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 305px;
-    padding-top: 290px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.bg-21::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-/* Estilo geral do rodapé */
-.bg-rodape {
-    background-color: #000000;
-    color: #f0f0f0;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-
-/* Parágrafo dos direitos autorais */
-.bg-rodape p {
-    font-size: 16px;
-    color:#d80303;
+.timeline-title {
+    font-size: 1.4rem;
+    font-weight: 600;
     margin: 0;
-    display: flex;
-    align-items: center;
+    color: white;
 }
 
-/* Ícones sociais ao lado do parágrafo */
+.timeline-click-hint {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Modal (Glassmorphism) */
+.glass-modal {
+    background: rgba(15, 15, 18, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.modal-title {
+    font-size: 1.8rem;
+}
+
+.movie-info-block {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.movie-info-block h6 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.movie-info-block p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+#modalImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Footer */
+.bg-rodape {
+    background-color: #050505;
+    border-top: 1px solid var(--glass-border);
+    padding: 30px 0;
+}
+
+.p-footer {
+    color: var(--text-muted);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
 .social-icons {
     display: flex;
-    gap: 15px;
-    margin-left: 15px;
+    gap: 20px;
 }
 
-/* Estilo dos ícones sociais */
 .social-icons a {
-    color: #f0f0f0;
+    color: var(--text-muted);
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-icons a:hover {
-    color: #c51717;
-    transform: scale(1.2);
+    color: var(--marvel-red);
+    transform: scale(1.1);
 }
 
-/* Responsividade */
-@media (max-width: 430px){
-    footer {
-        padding: 1px 0; /* Menos padding nas telas menores */
-    }
-
-    .bg-rodape {
-        flex-direction: column; /* Empilha os elementos no footer */
-        text-align: center;
-    }
-
-    .bg-rodape p{
-        font-size: small;
-    }
-
-
-    .social-icons {
-        gap: 10px;
-    }
-
-    .social-icons a {
-        font-size: 10px; /* Ícones menores para telas pequenas */
-    }
-
-    .navbar-brand {
-        font-size: medium; /* Ajusta o tamanho do texto do menu */
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
     }
     
-
-    body {
-        background-image: url("img/telaresponsiva.png");
-    
-        background-repeat: no-repeat;
-        margin: 0; /* Remove a margem para evitar o fundo branco */ 
-
-        background-size: contain; /* Mostra a imagem inteira sem cortar */
-        background-attachment: scroll; /* Evita o problema de zoom */
-        background-position: center top; /* Ajusta a posição para o topo central */
-    }
-
-    h1 {
-        font-size: 1.0em; /* Reduz o tamanho do título principal */
-    }
-
-    h5 {
-        font-size: 0.8em; /* Ajusta o tamanho dos subtítulos */
-    }
-
-    .timeline {
-        padding: 20px 10px; /* Reduz o espaçamento para caber melhor */
-    }
-
-    
-
-
-    
-
-
-    
-    .timeline-content {
-        font-size: 0.5em; /* Ajusta o tamanho do texto */
-        border-radius: 20px;
-        width: 80%; /* Reduz o tamanho para dispositivos menores */
-        padding: 10px; /* Adiciona um pouco de espaçamento */
-        background-color: rgba(14, 13, 13, 0.8); /* Fundo preto com 80% de opacidade */
-        border:none;
-        max-height: 160px;
-        min-height: 70px;
-        
-        
-        
-        
-    }
-
-            
-        .timeline-content h2 {
-            font-size:8px;
-            margin: 0 0 8px 0; /* Margem inferior ajustada */
-            
-        }
-    
-        button.btn-outline-danger {
-            font-size: 0.9em; /* Reduz o texto dos botões */
-            
-        }
-
-    
-    
-    
-
-    .bg-1, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6, .bg-7, .bg-8, .bg-9, .bg-10, .bg-11, .bg-12, .bg-13, .bg-14, .bg-15, .bg-16 , .bg-17 , .bg-18 , .bg-19 , .bg-20, .bg-21{
-        min-height: 210px; /* Reduz a altura mínima em telas menores */
-        padding-top: 70px; /* Ajusta o espaçamento superior */
-        padding-bottom: 10px; /* Ajusta o espaçamento inferior */
-        max-height: 300px;
-        max-width: 350%;
-        
-    }
-
-    .btn{
-        font-size: 1.1em;
-    }
-
-}
-
-@media (max-width: 768px) {
-    footer {
-        padding: 1px 0; /* Menos padding nas telas menores */
-    }
-
-    .bg-rodape {
-        flex-direction: column; /* Empilha os elementos no footer */
-        text-align: center;
-    }
-
-    .bg-rodape p{
-        font-size: small;
-    }
-
-
-    .social-icons {
-        gap: 10px;
-    }
-
-    .social-icons a {
-        font-size: 10px; /* Ícones menores para telas pequenas */
-    }
-
-    .navbar-brand {
-        font-size: medium; /* Ajusta o tamanho do texto do menu */
+    .timeline::after {
+        left: 31px;
     }
     
-
-    body {
-        background-image: url("https://wallpapercave.com/wp/wp12599672.jpg");
-        background-size: cover; /* Cobre toda a tela */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment:fixed; /* Remove o efeito fixo para evitar problemas */
-        height: 100vh; /* Garante que o fundo ocupe toda a altura da tela */
-        margin: 0; /* Remove a margem para evitar o fundo branco */ 
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
     }
-
-    h1 {
-        font-size: 1.0em; /* Reduz o tamanho do título principal */
+    
+    .timeline-item.right {
+        left: 0;
     }
-
-    h5 {
-        font-size: 0.8em; /* Ajusta o tamanho dos subtítulos */
+    
+    .timeline-item::after {
+        left: 21px !important; /* Adjust dot position to match line */
     }
-
-    .timeline {
-        padding: 20px 10px; /* Reduz o espaçamento para caber melhor */
+    
+    .timeline-item.left::after {
+        left: 21px !important;
     }
-
-    
-
-
-    
-
-
-    
-    .timeline-content {
-        font-size: 0.5em; /* Ajusta o tamanho do texto */
-        border-radius: 20px;
-        width: 80%; /* Reduz o tamanho para dispositivos menores */
-        padding: 10px; /* Adiciona um pouco de espaçamento */
-        background-color: rgba(14, 13, 13, 0.8); /* Fundo preto com 80% de opacidade */
-        border:none;
-        max-height: 160px;
-        min-height: 70px;
-        
-        
-        
-        
-    }
-
-            
-        .timeline-content h2 {
-            font-size:8px;
-            margin: 0 0 8px 0; /* Margem inferior ajustada */
-            
-        }
-    
-        button.btn-outline-danger {
-            font-size: 0.9em; /* Reduz o texto dos botões */
-            
-        }
-
-    
-    
-    
-
-    .bg-1, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6, .bg-7, .bg-8, .bg-9, .bg-10, .bg-11, .bg-12, .bg-13, .bg-14, .bg-15, .bg-16 , .bg-17 , .bg-18 , .bg-19 , .bg-20, .bg-21{
-        min-height: 210px; /* Reduz a altura mínima em telas menores */
-        padding-top: 70px; /* Ajusta o espaçamento superior */
-        padding-bottom: 10px; /* Ajusta o espaçamento inferior */
-        max-height: 300px;
-        max-width: 350%;
-        
-    }
-
-    .btn{
-        font-size: 1.1em;
-    }
-
-}
-
-
-
-.hover-text {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    z-index: 1;
-}
-
-.btn:hover .hover-text {
-    display: block;
 }
